@@ -1,0 +1,5 @@
+﻿services:
+    app.clock:
+        class: PartyInvites.Services.Clock
+        interface: PartyInvites.Services.IClock
+        lifetime: singleton

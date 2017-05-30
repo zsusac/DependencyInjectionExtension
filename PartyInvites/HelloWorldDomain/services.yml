@@ -1,0 +1,5 @@
+﻿services:
+    app.hello:
+        class: PartyInvites.HelloWorldDomain.Services.HelloWorld
+        interface: PartyInvites.HelloWorldDomain.Services.IHelloWorld
+        lifetime: scoped

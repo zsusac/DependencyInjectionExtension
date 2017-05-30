@@ -1,0 +1,5 @@
+﻿services:
+    app.startup:
+        class: PartyInvites.StartupDomain.Services.UptimeService
+        interface: PartyInvites.StartupDomain.Services.IUptimeService
+        lifetime: transient
