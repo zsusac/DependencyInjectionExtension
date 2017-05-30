@@ -11,6 +11,27 @@ If we want to register new service in DI container using yaml file we need to:
 * Create *services.yml* file 
 * Add service configuration to *services.yml* file
 
+*services.yml* file structure should look like this:
+```
+services:
+    <service name>:
+        class: <type name qualified by its namespace>
+        interface: <type name qualified by its namespace>
+        lifetime: <service lifetime>
+
+    ...
+```
+
+All services should be placed under *services* root node. Every service should be configured with following properties:
+
+Property | Required | Default value
+--- | --- | ---
+service name | true | null
+class | true | null
+interface | false | null
+lifetime | false | singleton
+
+
 Here is an example of service configuration in *services.yml* file
 ```
 services:
@@ -21,7 +42,7 @@ services:
 ```
 
 Because Clock class and IClock interface are in current assembly, we need to add type name qualified by its namespace for class and interface configs.
-If we want to add another service, we need to add service class, service interface and service configuration to existing (or new) *services.yml* file.
+If we want to add another service, we need to create service class, service interface and add service configuration to existing (or new) *services.yml* file.
 If we add configuration to existing *services.yml* file it will look like this:
 ```
 services:

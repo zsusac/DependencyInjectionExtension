@@ -1,0 +1,3 @@
+﻿services:
+    app.onlyClass:
+        class: PartyInvites.OnlyClassDomain.Services.OnlyClassService

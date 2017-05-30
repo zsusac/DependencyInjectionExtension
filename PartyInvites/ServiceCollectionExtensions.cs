@@ -128,14 +128,25 @@ namespace PartyInvites
             dynamic classType = Type.GetType(newService.className);
             dynamic interfaceType = Type.GetType(newService.interfaceName);
 
-            if (interfaceType == null)
-            {
-                throw new ArgumentException("Service interface type '" + newService.interfaceName + "' does not exist.");
-            }
-
             if (classType == null)
             {
                 throw new ArgumentException("Service class type '" + newService.className + "' does not exist.");
+            }
+
+            // If service is only defined with class type, register service as singleton object instance
+            if (newService.interfaceName == "" || newService.interfaceName == null)
+            {
+                // Register service in .NET Core DI container
+                _services.Add(new ServiceDescriptor(classType, Activator.CreateInstance(classType)));
+                // Add newly registred service to list of already registred services in all services.yml files
+                _registeredServices.Add(newService);
+
+                return;
+            }
+
+            if (interfaceType == null)
+            {
+                throw new ArgumentException("Service interface type '" + newService.interfaceName + "' does not exist.");
             }
 
             // TODO: Check if given service class implements given service interface
