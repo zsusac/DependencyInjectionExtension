@@ -56,4 +56,13 @@ services:
         lifetime: transient
 ```
 
+To list all registred services go to http://localhost:5200/allservices
+At the end of the page you can see all registered services using yaml configuration files:
+```
+PartyInvites.Services.IClock                            Singleton  PartyInvites.Services.Clock
+PartyInvites.HelloWorldDomain.Services.IHelloWorld      Scoped     PartyInvites.HelloWorldDomain.Services.HelloWorld
+PartyInvites.OnlyClassDomain.Services.OnlyClassService  Singleton	
+PartyInvites.StartupDomain.Services.IUptimeService      Transient  PartyInvites.StartupDomain.Services.UptimeService
+```
+
 Extension will throw an error if we want to register two services with same name or same class type.
